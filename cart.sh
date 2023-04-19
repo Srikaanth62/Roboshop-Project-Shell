@@ -20,15 +20,8 @@ echo -e "\e[35m>>>>>> load service <<<<<<<<<<<\e[0m"
 systemctl daemon-reload
 echo -e "\e[35m>>>>>> Enable and start service <<<<<<<<<<<\e[0m"
 systemctl enable cart
-systemctl start cart
-echo -e "\e[35m>>>>>> copy mongodb repo file <<<<<<<<<<<\e[0m"
-cp /root/Roboshop-Project-Shell/mongo.repo /etc/yum.repos.d/mongo.repo
-echo -e "\e[35m>>>>>> Install mongodb client <<<<<<<<<<<\e[0m"
-yum install mongodb-org-shell -y
-echo -e "\e[35m>>>>>> load mongodb schema <<<<<<<<<<<\e[0m"
-mongo --host mongodb-dev.srikaanth62.online </app/schema/user.js
-echo -e "\e[35m>>>>>> restart the service <<<<<<<<<<<\e[0m"
 systemctl restart cart
+
 
 
 
