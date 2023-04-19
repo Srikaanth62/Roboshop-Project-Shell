@@ -11,3 +11,4 @@ echo -e "\e[36m>>>>>>>> add application user and pwd <<<<<<<<\e[0m"
 mysql_secure_installation --set-root-pass RoboShop@1
 echo -e "\e[36m>>>>>>>> Restart my sql  <<<<<<<<\e[0m"
 systemctl restart mysqld
+
