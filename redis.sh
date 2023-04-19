@@ -11,3 +11,4 @@ echo -e "\e[33m>>>>>>>>> Enable and restart the redis service<<<<<<<<<\e[0m"
 systemctl enable redis
 systemctl restart redis
 
+
