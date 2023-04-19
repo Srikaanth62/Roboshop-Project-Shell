@@ -3,7 +3,7 @@ yum install golang -y
 echo -e "\e[32m>>>>>>>>>>Add application user<<<<<<<<\e[0m"
 useradd roboshop
 echo -e "\e[32m>>>>>>>>> create app directory <<<<<<<<<<\e[0m"
-rm-rf /app
+rm -rf /app
 mkdir /app
 echo -e "\e[32m>>>>>>>>> download application code <<<<<<<<<<\e[0m"
 curl -L -o /tmp/dispatch.zip https://roboshop-artifacts.s3.amazonaws.com/dispatch.zip
