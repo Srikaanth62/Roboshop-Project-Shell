@@ -25,7 +25,7 @@ echo -e "\e[34m>>>>>>> enable and start service <<<<<<<<\e[0m"
 systemctl enable user
 systemctl start user
 echo -e "\e[34m>>>>>>> copy mongodb repo file <<<<<<<<\e[0m"
-cp /root/Roboshop-Project-Shell/mongo.repo /etc/yum.repos.d/mongo.repo
+cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 echo -e "\e[34m>>>>>>> Install mongodb client <<<<<<<<\e[0m"
 yum install mongodb-org-shell -y
 echo -e "\e[34m>>>>>>> load mongodb schema <<<<<<<<\e[0m"
