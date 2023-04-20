@@ -1,5 +1,7 @@
-script_path=$(dirname $0)
+script_path=$(pwd)
 source ${script_path}/common.sh
+echo $add_user
+exit
 echo -e "\e[34m>>>>>>>> Setup nodejs repo <<<<<<<<\e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 echo -e "\e[34m>>>>>>>> Install nodejs <<<<<<<<<<<\e[0m"
