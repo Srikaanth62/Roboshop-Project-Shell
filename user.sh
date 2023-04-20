@@ -1,4 +1,4 @@
-path=${realpath "$0"}
+path=$(realpath "$0")
 
 realpath $0
 exit
