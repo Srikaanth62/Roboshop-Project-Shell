@@ -1,10 +1,11 @@
 path=$(realpath "$0")
 script_path=$(dirname "$path")
 source ${script_path}/common.sh
+mysql_root_pwd=$1
 echo -e "\e[31m>>>>>>>>>>> Install java packaging software<<<<<<<<<\e[0m"
 yum install maven -y
 echo -e "\e[31m>>>>>>>>>> create application user<<<<<<<<<\e[0m"
-useradd roboshop
+useradd ${add_user}
 echo -e "\e[31m>>>>>>>>>> craete app directory<<<<<<<<<\e[0m"
 rm -rf /app
 mkdir /app
@@ -26,6 +27,6 @@ systemctl start shipping
 echo -e "\e[31m>>>>>>>>>> Install sql client <<<<<<<<<\e[0m"
 yum install mysql -y
 echo -e "\e[31m>>>>>>>>>> Load the sql schema <<<<<<<<<\e[0m"
-mysql -h mysql-dev.srikaanth62.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
+mysql -h mysql-dev.srikaanth62.online -uroot -p${mysql_root_pwd} < /app/schema/shipping.sql
 echo -e "\e[31m>>>>>>>>>> Restart the service <<<<<<<<<\e[0m"
 systemctl restart shipping
