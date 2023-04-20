@@ -1,6 +1,7 @@
-source common.sh
+source_path=$(dirname $0)
+source ${source_path}/common.sh
 
-dirname $0
+
 exit
 echo -e "\e[34m>>>>>>>> Setup nodejs repo <<<<<<<<\e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
