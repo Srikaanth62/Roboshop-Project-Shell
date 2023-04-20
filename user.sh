@@ -1,4 +1,7 @@
 source common.sh
+
+dirname $0
+exit
 echo -e "\e[34m>>>>>>>> Setup nodejs repo <<<<<<<<\e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 echo -e "\e[34m>>>>>>>> Install nodejs <<<<<<<<<<<\e[0m"
