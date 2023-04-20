@@ -1,3 +1,6 @@
+path=$(realpath "$0")
+script_path=$(dirname "$path")
+source ${script_path}/common.sh
 echo -e "\e[31m>>>>>>>>>>> Install java packaging software<<<<<<<<<\e[0m"
 yum install maven -y
 echo -e "\e[31m>>>>>>>>>> create application user<<<<<<<<<\e[0m"
@@ -14,7 +17,7 @@ echo -e "\e[31m>>>>>>>>>> download dependencies and build the applications<<<<<<
 mvn clean package
 mv target/shipping-1.0.jar shipping.jar
 echo -e "\e[31m>>>>>>>>>> copy shipping service <<<<<<<<<\e[0m"
-cp /root/Roboshop-Project-Shell/shipping.service /etc/systemd/system/shipping.service
+cp ${script_path}/shipping.service /etc/systemd/system/shipping.service
 echo -e "\e[31m>>>>>>>>>> Load service <<<<<<<<<\e[0m"
 systemctl daemon-reload
 echo -e "\e[31m>>>>>>>>>> Enable and start the service <<<<<<<<<\e[0m"

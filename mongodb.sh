@@ -1,5 +1,8 @@
+path=$(realpath "$0")
+script_path=$(dirname "$path")
+source $script_path/common.sh
 echo -e "\e[31m>>>>>> create mongo repo file <<<<<<<\e[0m"
-cp /root/Roboshop-Project-Shell/mongo.repo /etc/yum.repos.d/mongo.repo
+cp $script_path/mongo.repo /etc/yum.repos.d/mongo.repo
 echo -e "\e[31m>>>>>> Install mongodb <<<<<<<\e[0m"
 yum install mongodb-org -y
 echo -e "\e[31m>>>>>> Update listen address <<<<<<<<\e[0m"

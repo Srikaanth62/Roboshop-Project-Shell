@@ -1,3 +1,6 @@
+path=$(realpath "$0")
+script_path=$(dirname "$path")
+source ${script_path}/common.sh
 echo -e "\e[32m>>>>>>>>> Install YUM repo file <<<<<<<<<\e[0m"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
 echo -e "\e[32m>>>>>>>> Install erlang <<<<<<<<<<<<<<\e[0m"
