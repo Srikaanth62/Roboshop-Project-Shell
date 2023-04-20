@@ -1,6 +1,7 @@
 source_path=$(dirname $0)
 source ${source_path}/common.sh
 
+echo ${add_user}
 
 exit
 echo -e "\e[34m>>>>>>>> Setup nodejs repo <<<<<<<<\e[0m"
