@@ -1,9 +1,5 @@
 script_path=$(dirname $0)
 source ${script_path}/common.sh
-
-echo ${script_path}
-
-exit
 echo -e "\e[34m>>>>>>>> Setup nodejs repo <<<<<<<<\e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 echo -e "\e[34m>>>>>>>> Install nodejs <<<<<<<<<<<\e[0m"
@@ -21,7 +17,7 @@ unzip /tmp/user.zip
 echo -e "\e[34m>>>>>>>> Install nodejs dependencies <<<<<<<<<\e[0m"
 npm install
 echo -e "\e[34m>>>>>>> copy user service <<<<<<<<\e[0m"
-cp /root/Roboshop-Project-Shell/user.service /etc/systemd/system/user.service
+cp ${script_path}/user.service /etc/systemd/system/user.service
 echo -e "\e[34m>>>>>>> load service <<<<<<<<\e[0m"
 systemctl daemon-reload
 echo -e "\e[34m>>>>>>> enable and start service <<<<<<<<\e[0m"
