@@ -12,6 +12,6 @@ DATE=$(date +%D)
 echo Today date is ${DATE}
 #Printing Arithmatic
 NETSAL=1500000
-TAX=$((1500000*0.3))
+TAX=$((1500000/3/2))
 echo My tax deduction is ${TAX}
 
