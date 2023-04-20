@@ -8,5 +8,5 @@ echo First name = $A
 echo Last name = ${B}
 
 #Printing Date
-DATE=$(date +%C)
+DATE=$(date +%D)
 echo Today date is ${DATE}
