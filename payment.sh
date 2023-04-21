@@ -1,6 +1,7 @@
 path=$(realpath "$0")
 script_path=$(dirname "$path")
 source ${script_path}/common.sh
+rabbitmq_user_pwd=$1
 echo -e "\e[32m>>>>>>>> Install python 3.6 <<<<<<<<<<<\e[0m"
 yum install python36 gcc python3-devel -y
 echo -e "\e[32m>>>>>>>> add application user<<<<<<<<<<<\e[0m"
