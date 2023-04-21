@@ -1,19 +1,22 @@
 path=$(realpath "$0")
 script_path=$(dirname "$path")
 source ${script_path}/common.sh
-echo -e "\e[33m>>>>>>> Install Nginx <<<<<<<<<\e[0m"
+print_head() {
+  echo -e "\e[33m>>>>>>>>> $1 <<<<<<<<<<\e[0m"
+}
+print_head "Install Nginx "
 yum install nginx -y
-echo -e "\e[33m>>>>>>> Download frontend source code <<<<<<<\e[0m"
+print_head "Download frontend source code "
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
-echo -e "\e[33m>>>>>>> Remove html folder <<<<<<<<<\e[0m"
+print_head "Remove html folder"
 rm -rf /usr/share/nginx/html/*
-echo -e "\e[33m>>>>>>> change path to html <<<<<<<<\e[0m"
+print_head "change path to html "
 cd /usr/share/nginx/html
-echo -e "\e[33m>>>>>>> unzip frontend folder <<<<<<<\e[0m"
+print_head "unzip frontend folder "
 unzip /tmp/frontend.zip
-echo -e "\e[33m>>>>>> copy roboshop conf file <<<<<<<\e[0m"
+print_head "copy roboshop conf file"
 cp ${script_path}/roboshop.conf /etc/nginx/default.d/roboshop.conf
-echo -e "\e[33m>>>>>> enable and start nginx <<<<<<<<\e[0m"
+print_head "enable and start nginx "
 systemctl enable nginx
 systemctl restart nginx
 
