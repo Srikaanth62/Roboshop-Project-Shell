@@ -63,6 +63,13 @@ func_nodejs() {
 func_java() {
   print_head "Install java packaging software"
   yum install maven -y
+  if [ $? -eq 0 ]; then
+    echo -e "\e[32mSUCCESS\e[0m"
+  else
+    echo -e "\e[31mFAILURE\e[0m"
+    exit
+  fi
+  exit
   func_app_user
   print_head "download dependencies and build the application"
   mvn clean package
