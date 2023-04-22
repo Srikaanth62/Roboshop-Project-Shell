@@ -98,3 +98,16 @@ func_java() {
   func_setup_schema
   func_systemd_setup
 }
+
+func_golang() {
+  print_head "Install golang"
+  yum install golang -y
+  func_app_user
+  print_head "Install dependencies and build the applications"
+  go mod init dispatch
+  go get
+  go build
+  func_systemd_setup
+}
+
+
