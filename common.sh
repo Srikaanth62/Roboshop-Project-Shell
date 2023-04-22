@@ -39,7 +39,8 @@ func_nodejs() {
   systemctl daemon-reload
   Print_head "Enable and start service"
   systemctl enable ${component}
-  setup_schema()
   systemctl restart ${component}
+
+  setup_schema()
 
 }
