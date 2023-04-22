@@ -1,15 +1,18 @@
 path=$(realpath "$0")
 script_path=$(dirname "$path")
 source $script_path/common.sh
+print_head() {
+  echo -e "\e[34m>>>>>>>>>>> $1 <<<<<<<<<<<<<<\e[0m"
+}
 component=user
 func_nodejs
-echo -e "\e[34m>>>>>>> copy mongodb repo file <<<<<<<<\e[0m"
+print_head "copy mongodb repo file "
 cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
-echo -e "\e[34m>>>>>>> Install mongodb client <<<<<<<<\e[0m"
+print_head "Install mongodb client"
 yum install mongodb-org-shell -y
-echo -e "\e[34m>>>>>>> load mongodb schema <<<<<<<<\e[0m"
+print_head "load mongodb schema "
 mongo --host mongodb-dev.srikaanth62.online </app/schema/${component}.js
-echo -e "\e[34m>>>>>>> restart user service <<<<<<<<\e[0m"
+print_head "restart user service "
 systemctl restart ${component}
 
 
