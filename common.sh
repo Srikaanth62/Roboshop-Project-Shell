@@ -98,7 +98,6 @@ func_java() {
   func_app_user
   print_head "download dependencies and build the application"
   mvn clean package  &>>$log_file
-  func_exit_code $?
   mv target/${component}-1.0.jar ${component}.jar &>>$log_file
   func_exit_code $?
   func_setup_schema
