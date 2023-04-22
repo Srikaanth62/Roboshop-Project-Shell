@@ -84,7 +84,6 @@ func_java() {
   print_head "Install java packaging software"
   yum install maven -y
   func_exit_code $?
-  exit
   func_app_user
   print_head "download dependencies and build the application"
   mvn clean package
