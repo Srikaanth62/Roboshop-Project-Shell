@@ -90,7 +90,6 @@ func_java() {
   yum install maven -y
   func_exit_code $?
   func_app_user
-  exit
   print_head "download dependencies and build the application"
   mvn clean package
   func_exit_code $?
