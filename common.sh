@@ -19,17 +19,20 @@ func_exit_code() {
 func_app_user() {
     print_head "create application user"
     if [ $? -ne 0 ]; then
-    useradd ${add_user}
+    useradd ${add_user}  &>>$log_file
     fi
+    func_exit_code $?
     print_head "create app directory"
-    rm -rf /app
-    mkdir /app
+    rm -rf /app  &>>$log_file
+    func_exit_code $?
+    mkdir /app  &>>$log_file
+    func_exit_code $?
     print_head "Download application code"
     curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>$log_file
     func_exit_code $?
-    cd /app
+    cd /app  &>>$log_file
     print_head "unzip code file"
-    unzip /tmp/${component}.zip
+    unzip /tmp/${component}.zip  &>>$log_file
     func_exit_code $?
 }
 
@@ -39,17 +42,18 @@ func_setup_schema() {
   cp $script_path/mongo.repo /etc/yum.repos.d/mongo.repo  &>>$log_file
   func_exit_code $?
   print_head  "Install mongodb client"
-  yum install mongodb-org-shell -y
+  yum install mongodb-org-shell -y  &>>$log_file
   func_exit_code $?
   print_head "load mongodb schema "
   mongo --host mongodb-dev.srikaanth62.online </app/schema/${component}.js  &>>$log_file
   func_exit_code $?
   print_head "Restart the catalogue service "
-  systemctl restart ${component}
+  systemctl restart ${component}  &>>$log_file
+  func_exit_code $?
 fi
   if [ "$setup_schema" == "mysql" ]; then
      print_head "Install sql client"
-     yum install mysql -y
+     yum install mysql -y  &>>$log_file
      func_exit_code $?
      print_head "Load the sql schema"
      mysql -h mysql-dev.srikaanth62.online -uroot -p${mysql_root_pwd} < /app/schema/${component}.sql  &>>$log_file
@@ -62,12 +66,15 @@ fi
    cp ${script_path}/${component}.service /etc/systemd/system/${component}.service  &>>$log_file
    func_exit_code $?
    print_head "Load service"
-   systemctl daemon-reload
+   systemctl daemon-reload &>>$log_file
+   func_exit_code $?
    print_head "Enable and start the service"
-   systemctl enable ${component}
-   systemctl start ${component}
+   systemctl enable ${component}  &>>$log_file
+   systemctl start ${component}  &>>$log_file
+   func_exit_code $?
    print_head "Restart the service"
-   systemctl restart ${component}
+   systemctl restart ${component}  &>>$log_file
+   func_exit_code $?
  }
 
 func_nodejs() {
@@ -75,11 +82,11 @@ func_nodejs() {
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
   func_exit_code $?
   print_head "Install nodejs"
-  yum install nodejs -y
+  yum install nodejs -y  &>>$log_file
   func_exit_code $?
   func_app_user
   print_head "Install dependencies "
-  npm install
+  npm install  &>>$log_file
   func_exit_code $?
   func_setup_schema
   func_systemd_setup
@@ -87,11 +94,11 @@ func_nodejs() {
 
 func_java() {
   print_head "Install java packaging software"
-  yum install maven -y
+  yum install maven -y  &>>$log_file
   func_exit_code $?
   func_app_user
   print_head "download dependencies and build the application"
-  mvn clean package
+  mvn clean package  &>>$log_file
   func_exit_code $?
   mv target/${component}-1.0.jar ${component}.jar &>>$log_file
   func_exit_code $?
@@ -101,12 +108,14 @@ func_java() {
 
 func_golang() {
   print_head "Install golang"
-  yum install golang -y
+  yum install golang -y  &>>$log_file
+  func_exit_code $?
   func_app_user
   print_head "Install dependencies and build the applications"
-  go mod init dispatch
-  go get
-  go build
+  go mod init dispatch  &>>$log_file
+  go get  &>>$log_file
+  go build  &>>$log_file
+  func_exit_code $?
   func_systemd_setup
 }
 
