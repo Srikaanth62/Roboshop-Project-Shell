@@ -2,11 +2,10 @@ path=$(realpath "$0")
 script_path=$(dirname "$path")
 source ${script_path}/common.sh
 mysql_root_pwd=$1
-if [-z "$mysql_root_pwd"]; then
+if [ -z "$mysql_root_pwd" ]; then
   echo mysql password missing
   exit
 fi
-
 print_head() {
   echo -e "\e[34m>>>>>>>>>>> $1 <<<<<<<<<<<<<<\e[0m"
 }
