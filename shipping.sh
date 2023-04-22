@@ -2,31 +2,38 @@ path=$(realpath "$0")
 script_path=$(dirname "$path")
 source ${script_path}/common.sh
 mysql_root_pwd=$1
-echo -e "\e[31m>>>>>>>>>>> Install java packaging software<<<<<<<<<\e[0m"
+if [-z "$mysql_root_pwd"]; then
+  echo mysql password missing
+  exit
+  fi
+print_head() {
+  echo -e "\e[34m>>>>>>>>>>> $1 <<<<<<<<<<<<<<\e[0m"
+}
+print_head "Install java packaging software"
 yum install maven -y
-echo -e "\e[31m>>>>>>>>>> create application user<<<<<<<<<\e[0m"
+print_head "create application user"
 useradd ${add_user}
-echo -e "\e[31m>>>>>>>>>> craete app directory<<<<<<<<<\e[0m"
+print_head "craete app directory"
 rm -rf /app
 mkdir /app
-echo -e "\e[31m>>>>>>>>>> Download application code <<<<<<<<<\e[0m"
+print_head "Download application code"
 curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip
 cd /app
-echo -e "\e[31m>>>>>>>>>> unzip code file<<<<<<<<<\e[0m"
+print_head "unzip code file"
 unzip /tmp/shipping.zip
-echo -e "\e[31m>>>>>>>>>> download dependencies and build the applications<<<<<<<<<\e[0m"
+print_head "download dependencies and build the application"
 mvn clean package
 mv target/shipping-1.0.jar shipping.jar
-echo -e "\e[31m>>>>>>>>>> copy shipping service <<<<<<<<<\e[0m"
+print_head "copy shipping service"
 cp ${script_path}/shipping.service /etc/systemd/system/shipping.service
-echo -e "\e[31m>>>>>>>>>> Load service <<<<<<<<<\e[0m"
+print_head "Load service"
 systemctl daemon-reload
-echo -e "\e[31m>>>>>>>>>> Enable and start the service <<<<<<<<<\e[0m"
+print_head "Enable and start the service"
 systemctl enable shipping
 systemctl start shipping
-echo -e "\e[31m>>>>>>>>>> Install sql client <<<<<<<<<\e[0m"
+print_head "Install sql client"
 yum install mysql -y
-echo -e "\e[31m>>>>>>>>>> Load the sql schema <<<<<<<<<\e[0m"
+print_head "Load the sql schema"
 mysql -h mysql-dev.srikaanth62.online -uroot -p${mysql_root_pwd} < /app/schema/shipping.sql
-echo -e "\e[31m>>>>>>>>>> Restart the service <<<<<<<<<\e[0m"
+print_head "Restart the service"
 systemctl restart shipping
