@@ -2,8 +2,8 @@
 add_user=roboshop
 log_file=/tmp/roboshop.log
 print_head() {
-  echo -e "\e[32m>>>>>>> $1 <<<<<<<<<<<<<\e[0m"
-  echo -e "\e[36m>>>>>>> $1 <<<<<<<<<<<<<\e[0m" &>>$log_file
+  echo -e "\e[36m>>>>>>> $1 <<<<<<<<<<<<<\e[0m"
+  echo -e "\e[32m>>>>>>> $1 <<<<<<<<<<<<<\e[0m" &>>$log_file
 }
 
 func_exit_code() {

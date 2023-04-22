@@ -6,20 +6,24 @@ if [ -z "$mysql_root_pwd" ]; then
   echo MySql password is missing
   exit
   fi
-print_head() {
-  echo -e "\e[36m>>>>>>>> $1 <<<<<<<<<\e[0m"
-}
+
 print_head "Disable sql 8 ver"
-dnf module disable mysql -y
+dnf module disable mysql -y  &>>$log_file
+func_exit_code $?
 print_head "Setup mysql repo file"
-cp ${script_path}/mysql.repo /etc/yum.repos.d/mysql.repo
+cp ${script_path}/mysql.repo /etc/yum.repos.d/mysql.repo  &>>$log_file
+func_exit_code $?
 print_head "Install sql server "
-yum install mysql-community-server -y
+yum install mysql-community-server -y  &>>$log_file
+func_exit_code $?
 print_head "Enable and start service "
-systemctl enable mysqld
-systemctl start mysqld
+systemctl enable mysqld  &>>$log_file
+systemctl start mysqld  &>>$log_file
+func_exit_code $?
 print_head "add application user and pwd "
-mysql_secure_installation --set-root-pass ${mysql_root_pwd}
+mysql_secure_installation --set-root-pass ${mysql_root_pwd}  &>>$log_file
+func_exit_code $?
 print_head "Restart mysql"
-systemctl restart mysqld
+systemctl restart mysqld  &>>$log_file
+func_exit_code $?
 
