@@ -69,7 +69,6 @@ func_java() {
     echo -e "\e[31mFAILURE\e[0m"
     exit
   fi
-  exit
   func_app_user
   print_head "download dependencies and build the application"
   mvn clean package
