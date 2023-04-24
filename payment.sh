@@ -4,6 +4,6 @@ source ${script_path}/common.sh
 component=payment
 rabbitmq_user_pwd=$1
 if [ -z "$rabbitmq_user_pwd" ]; then
-  echo RabbitMQ password is missing
+  echo RabbitMQ Password is missing
   exit
   fi
