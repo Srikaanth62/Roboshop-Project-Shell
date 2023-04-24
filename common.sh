@@ -38,7 +38,7 @@ func_app_user() {
 func_setup_schema() {
   if [ "$setup_schema" == "mongo" ]; then
   print_head "copy and Setup mongodb repo "
-  cp $script_path/${component}.repo /etc/yum.repos.d/${component}.repo  &>>$log_file
+  cp $script_path/${setup_schema}.repo /etc/yum.repos.d/${setup_schema}.repo  &>>$log_file
   func_exit_code $?
   print_head  "Install mongodb client"
   yum install mongodb-org-shell -y  &>>$log_file
