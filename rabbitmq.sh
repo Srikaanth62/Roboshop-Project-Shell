@@ -7,6 +7,10 @@ if [ -z "$rabbitmq_user_pwd" ]; then
   exit
   fi
 
+ if [ $? -ne 0 ]; then
+    useradd ${add_user}  &>>$log_file
+    fi
+
 print_head "Install YUM repo file "
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash  &>>$log_file
 func_exit_code $?
