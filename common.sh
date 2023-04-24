@@ -18,7 +18,7 @@ func_exit_code() {
 
 func_app_user() {
     print_head "create application user"
-    id ${app_user} &>>$log_file
+
     if [ $? -ne 0 ]; then
     useradd ${add_user}  &>>$log_file
     fi
