@@ -2,11 +2,6 @@ path=$(realpath "$0")
 script_path=$(dirname "$path")
 source ${script_path}/common.sh
 
-# Check if user "roboshop" exists
-if id "roboshop" >/dev/null 2>&1; then
-    echo "User 'roboshop' already exists."
-fi
-
 rabbitmq_user_pwd=$1
 if [ -z "$rabbitmq_user_pwd" ]; then
   echo RabbitMQ Password is missing
