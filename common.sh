@@ -18,7 +18,6 @@ func_exit_code() {
 
 func_app_user() {
     print_head "create application user"
-
     if [ $? -ne 0 ]; then
     useradd ${add_user}  &>>$log_file
     fi
@@ -39,7 +38,7 @@ func_app_user() {
 func_setup_schema() {
   if [ "$setup_schema" == "mongo" ]; then
   print_head "copy and Setup mongodb repo "
-  cp $script_path/${setup_schema}.repo /etc/yum.repos.d/${setup_schema}.repo  &>>$log_file
+  cp $script_path/mongo.repo /etc/yum.repos.d/mongo.repo  &>>$log_file
   func_exit_code $?
   print_head  "Install mongodb client"
   yum install mongodb-org-shell -y  &>>$log_file
