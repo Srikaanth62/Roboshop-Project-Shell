@@ -105,16 +105,23 @@ func_java() {
 }
 
 func_golang() {
-  print_head "Install golang"
+  print_head "Install golang "
   yum install golang -y  &>>$log_file
   func_exit_code $?
   func_app_user
-  print_head "Install dependencies and build the applications"
-  go mod init dispatch  &>>$log_file
+  print_head " Copy systemd service "
+  cp ${component}.service /etc/systemd/system/${component}.service  &>>$log_file
+  func_exit_code $?
+  print_head "Install and build golang dependencies "
+  go mod init ${component}  &>>$log_file
   go get  &>>$log_file
   go build  &>>$log_file
   func_exit_code $?
-  func_systemd_setup
+  print_head " Reload and restart the dispatch service "
+  systemctl daemon-reload  &>>$log_file
+  systemctl enable ${component}  &>>$log_file
+  systemctl start ${component}  &>>$log_file
+  func_exit_code $?
 }
 
 func_python() {
