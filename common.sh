@@ -117,16 +117,18 @@ func_golang() {
   func_systemd_setup
 }
 
-print_head "Install python 3.6 "
-yum install python36 gcc python3-devel -y  &>>$log_file
-func_exit_code $?
-func_app_user
-print_head "Download and Install dependencies"
-pip3.6 install -r requirements.txt  &>>$log_file
-func_exit_code $?
-print_head "set rabbitmq pwd file"
-sed -i -e "s|rabbitmq_user_pwd|${rabbitmq_user_pwd}|" ${script_path}/${component}.service  &>>$log_file
-func_exit_code $?
-func_systemd_setup
+func_python() {
+  print_head "Install python 3.6 "
+  yum install python36 gcc python3-devel -y  &>>$log_file
+  func_exit_code $?
+  func_app_user
+  print_head "Download and Install dependencies"
+  pip3.6 install -r requirements.txt  &>>$log_file
+  func_exit_code $?
+  print_head "set rabbitmq pwd file"
+  sed -i -e "s|rabbitmq_user_pwd|${rabbitmq_user_pwd}|" ${script_path}/${component}.service  &>>$log_file
+  func_exit_code $?
+  func_systemd_setup
+}
 
 
