@@ -46,10 +46,8 @@ func_setup_schema() {
   print_head "load mongodb schema "
   mongo --host mongodb-dev.srikaanth62.online </app/schema/${component}.js  &>>$log_file
   func_exit_code $?
-  print_head "Restart the service "
-  systemctl restart ${component}  &>>$log_file
-  func_exit_code $?
 fi
+
   if [ "$setup_schema" == "mysql" ]; then
      print_head "Install sql client"
      yum install mysql -y  &>>$log_file
