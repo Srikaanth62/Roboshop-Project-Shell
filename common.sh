@@ -38,7 +38,7 @@ func_app_user() {
 func_setup_schema() {
   if [ "$setup_schema" == "mongo" ]; then
   print_head "copy and Setup mongodb repo "
-  cp $script_path/mongo.repo /etc/yum.repos.d/mongo.repo  &>>$log_file
+  cp $script_path/${component}.repo /etc/yum.repos.d/${component}.repo  &>>$log_file
   func_exit_code $?
   print_head  "Install mongodb client"
   yum install mongodb-org-shell -y  &>>$log_file
@@ -46,7 +46,7 @@ func_setup_schema() {
   print_head "load mongodb schema "
   mongo --host mongodb-dev.srikaanth62.online </app/schema/${component}.js  &>>$log_file
   func_exit_code $?
-  print_head "Restart the catalogue service "
+  print_head "Restart the service "
   systemctl restart ${component}  &>>$log_file
   func_exit_code $?
 fi
