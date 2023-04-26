@@ -85,8 +85,8 @@ func_nodejs() {
   print_head "Install dependencies "
   npm install  &>>$log_file
   func_exit_code $?
-  func_setup_schema
   func_systemd_setup
+  func_setup_schema
 }
 
 func_java() {
