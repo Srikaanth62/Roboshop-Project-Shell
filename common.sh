@@ -18,8 +18,9 @@ func_exit_code() {
 
 func_app_user() {
     print_head "create application user"
+    id ${add_user} &>>/tmp/roboshop.log
     if [ $? -ne 0 ]; then
-    useradd ${add_user}  &>>$log_file
+    useradd ${add_user}  &>>/tmp/roboshop.log
     fi
     func_exit_code $?
     print_head "create app directory"
@@ -85,8 +86,9 @@ func_nodejs() {
   print_head "Install dependencies "
   npm install  &>>$log_file
   func_exit_code $?
-  func_systemd_setup
   func_setup_schema
+  func_systemd_setup
+
 }
 
 func_java() {
