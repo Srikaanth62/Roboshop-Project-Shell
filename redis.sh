@@ -1,6 +1,6 @@
 path=$(realpath "$0")
 script_path=$(dirname "$path")
-source ${script_path}/common.sh
+source $script_path/common.sh
 
 print_head "Install redis repo file "
 yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y  &>>$log_file
