@@ -45,7 +45,7 @@ func_setup_schema() {
   yum install mongodb-org-shell -y  &>>$log_file
   func_exit_code $?
   print_head "load mongodb schema "
-  mongo --host mongodb-dev.srikaanth62.online </app/schema/${component}.js  &>>$log_file
+  mongo --host mongodb-dev.srikaanth62.online  </app/schema/${component}.js  &>>$log_file
   func_exit_code $?
 fi
 
@@ -61,7 +61,7 @@ fi
 
  func_systemd_setup() {
    print_head "copy systemd service"
-   cp ${script_path}/${component}.service /etc/systemd/system/${component}.service  &>>$log_file
+   cp $script_path/${component}.service /etc/systemd/system/${component}.service  &>>$log_file
    func_exit_code $?
    print_head "Load service"
    systemctl daemon-reload &>>$log_file
