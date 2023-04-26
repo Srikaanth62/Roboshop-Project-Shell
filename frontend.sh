@@ -9,7 +9,7 @@ source ${script_path}/common.sh
   curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip  &>>$log_file
   func_exit_code $?
   print_head "Remove html folder"
-  rm -rf /usr/share/nginx/*  &>>$log_file
+  rm -rf /usr/share/nginx/html/*   &>>$log_file
   func_exit_code $?
   print_head "change path to html "
   cd /usr/share/nginx/html  &>>$log_file
