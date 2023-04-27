@@ -3,5 +3,5 @@ variable "devops" {
 }
 
 output "result" {
-  value = "var.devops"
+  value = var.devops
 }
