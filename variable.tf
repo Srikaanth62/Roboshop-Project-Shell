@@ -13,7 +13,7 @@ output "who" {
 variable "list" {
   default = [
     100,
-    hi,
+    hello,
     10.6,
     true
   ]
