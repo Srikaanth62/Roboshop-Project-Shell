@@ -1,5 +1,5 @@
 variable "devops" {
-  default = "I am devops engineer"
+  default = "devops engineer"
 }
 
 output "result" {
@@ -7,5 +7,5 @@ output "result" {
 }
 
 output "who" {
-  value = "The Role is = ${var.devops} "
+  value = "The Role is ${var.devops} "
 }
