@@ -38,3 +38,16 @@ variable "num" {
 output "num" {
   value = var.num
 }
+
+variable "dict" {
+  default = {
+    year = 1995
+    Name = "Sridevi"
+    Boolean = true
+    date = 1303
+  }
+}
+
+output "details" {
+  value = var.dict["Name"]
+}
