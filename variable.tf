@@ -20,5 +20,21 @@ variable "list" {
 }
 
 output "All" {
-  value = var.list
+  value = var.list[2]
+}
+
+variable "boolean" {
+  default = false
+}
+
+output "boolean" {
+  value = var.boolean
+}
+
+variable "num" {
+  default = 1995
+}
+
+output "num" {
+  value = var.num
 }
