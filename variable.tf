@@ -1,4 +1,4 @@
-variable "devops" {
+/* variable "devops" {
   default = "devops engineer"
 }
 
