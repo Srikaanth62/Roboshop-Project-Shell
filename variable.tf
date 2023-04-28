@@ -53,3 +53,11 @@ output "details" {
 }
 */
 
+data "aws_security_group" "allow-all" {
+  Name = "allow-all"
+}
+
+output "SG" {
+  value = [ data.aws_security_group.allow-all.id ]
+}
+
