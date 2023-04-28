@@ -51,3 +51,5 @@ variable "dict" {
 output "details" {
   value = var.dict["Name"]
 }
+*/
+
