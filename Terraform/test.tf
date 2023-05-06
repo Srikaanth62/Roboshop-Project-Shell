@@ -43,7 +43,7 @@ variable "list" {
 
 output "list" {
   value = var.list[1]
-} */
+}
 
 variable "sample_map" {
   default = {
@@ -55,4 +55,6 @@ variable "sample_map" {
 
 output "sample_map" {
   value = var.sample_map["name"]
-}
+} */
+
+variable "dev" {}
