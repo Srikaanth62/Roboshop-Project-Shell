@@ -5,3 +5,7 @@ resource "aws_instance" "Test" {
     Name = "Terraform"
   }
 }
+
+output "Public" {
+  value = aws_instance.Test.public_ip
+}
