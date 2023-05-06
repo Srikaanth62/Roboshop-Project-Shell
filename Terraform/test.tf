@@ -58,3 +58,7 @@ output "sample_map" {
 } */
 
 variable "env" {}
+
+output "envi" {
+  value = var.env
+}
