@@ -12,6 +12,14 @@ resource "aws_instance" "Test" {
   }
 }
 
+resource "aws_route53_record" "Test" {
+  zone_id = Z088180210HCZBPL2XI2M
+  name    = "test-dev.srikaanth62.online"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.Test.private_ip]
+}
+
 /*
 output "ami" {
   value = data.aws_ami.centos.image_id
