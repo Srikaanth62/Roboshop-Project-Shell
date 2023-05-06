@@ -55,7 +55,7 @@ variable "sample_map" {
 
 output "sample_map" {
   value = var.sample_map["name"]
-} */
+}
 
 variable "env" {}
 
@@ -71,4 +71,15 @@ output "auto_boolean" {
 }
 output "sample" {
   value = var.sample1
+} */
+
+data "aws_security_group" "allow-all" {
+  Name = "allow-all"
 }
+
+output "security_group" {
+  value = data.aws_security_group.allow-all.id
+}
+
+
+
