@@ -13,7 +13,7 @@ resource "aws_instance" "Test" {
 }
 
 resource "aws_route53_record" "hostedzone" {
-  zone_id = Z088180210HCZBPL2XI2M
+  zone_id = "Z088180210HCZBPL2XI2M"
   name    = "test-dev.srikaanth62.online"
   type    = "A"
   ttl     = 30
