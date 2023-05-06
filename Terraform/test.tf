@@ -59,6 +59,8 @@ output "sample_map" {
 
 variable "env" {}
 
+variable "auto_boolean" {}
+
 output "envi" {
   value = var.env
 }
