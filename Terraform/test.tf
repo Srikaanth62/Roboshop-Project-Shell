@@ -57,4 +57,4 @@ output "sample_map" {
   value = var.sample_map["name"]
 } */
 
-variable "dev" {}
+variable "development" {}
