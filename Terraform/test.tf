@@ -23,7 +23,7 @@ resource "aws_route53_record" "hostedzone" {
 
 output "ami" {
   value = data.aws_ami.centos.image_id
-} */
+}
 
 variable "test" {
   default = "This is DevOps"
@@ -31,4 +31,16 @@ variable "test" {
 
 output "result" {
   value = "Which course is this. ${var.test}"
+} */
+
+variable "list" {
+  default = [
+  "hello"
+   9676166557
+    true
+  ]
+}
+
+output "list" {
+  value = var.list[1]
 }
