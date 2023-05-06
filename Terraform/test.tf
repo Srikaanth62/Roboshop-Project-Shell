@@ -62,3 +62,7 @@ variable "env" {}
 output "envi" {
   value = var.env
 }
+
+output "auto_boolean" {
+  value = var.auto_boolean
+}
