@@ -85,9 +85,6 @@ resource "null_resource" "fruits" {
   count = length(var.fruits)
 }
 
-output "fruits" {
-  value = null_resource.fruits
-}
 
 variable "fruits" {
   default = [ "apple", "banana", "orange" ]
