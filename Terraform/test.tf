@@ -48,7 +48,7 @@ output "list" {
 variable "sample_map" {
   default = {
     number = 9676166557
-    name = "srikanth"
+    name = "srikaanth"
     boolean = true
   }
 }
