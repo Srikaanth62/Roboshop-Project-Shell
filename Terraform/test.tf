@@ -71,7 +71,7 @@ output "auto_boolean" {
 }
 output "sample" {
   value = var.sample1
-} */
+}
 
 data "aws_security_group" "allow-all" {
   name = "allow-all"
@@ -79,7 +79,20 @@ data "aws_security_group" "allow-all" {
 
 output "security_group" {
   value = data.aws_security_group.allow-all.id
+} */
+
+resource "null_resource" "fruits" {
+  count = length(var.fruits)
 }
+
+output "fruits" {
+  value = null_resource.fruits
+}
+
+variable "fruits" {
+  default = [ "apple", "banana", "orange" ]
+}
+
 
 
 
