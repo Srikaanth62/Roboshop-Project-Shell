@@ -48,11 +48,11 @@ output "list" {
 variable "sample_map" {
   default = {
     number = 9676166557
-    name = srikanth
+    Name = srikanth
     boolean = true
   }
 }
 
 output "sample_map" {
-  value = var.sample_map["name"]
+  value = var.sample_map["Name"]
 }
