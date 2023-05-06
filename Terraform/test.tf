@@ -1,7 +1,7 @@
 data "aws_ami" "centos" {
-  most_recent      = true
-  name_regex       = "Devops-Practice"
   owners           = ["973714476881"]
+  most_recent      = true
+  name_regex       = "Centos-7-DevOps-Practice"
 }
 /*
 resource "aws_instance" "Test" {
