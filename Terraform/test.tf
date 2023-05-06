@@ -35,8 +35,8 @@ output "result" {
 
 variable "list" {
   default = [
-  "hello"
-   9676166557
+  "hello",
+   9676166557,
     true
   ]
 }
