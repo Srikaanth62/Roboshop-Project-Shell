@@ -30,5 +30,5 @@ variable "test" {
 }
 
 output "result" {
-  value = var.test
+  value = "Which course is this. ${var.test}"
 }
