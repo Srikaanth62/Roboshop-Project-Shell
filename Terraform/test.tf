@@ -31,7 +31,7 @@ variable "test" {
 
 output "result" {
   value = "Which course is this. ${var.test}"
-} */
+}
 
 variable "list" {
   default = [
@@ -43,4 +43,16 @@ variable "list" {
 
 output "list" {
   value = var.list[1]
+} */
+
+variable "sample_map" {
+  default = {
+    number = 9676166557
+    name = srikanth
+    boolean = true
+  }
+}
+
+output "sample_map" {
+  value = var.sample_map["name"]
 }
