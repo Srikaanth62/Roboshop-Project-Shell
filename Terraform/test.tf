@@ -81,19 +81,32 @@ output "security_group" {
   value = data.aws_security_group.allow-all.id
 } */
 
-resource "null_resource" "fruits" {
-  count = length(var.fruits)
+#resource "null_resource" "fruits" {
+#  count = length(var.fruits)
+#}
+#
+# provisioner "local-exec" {
+#  command = "echo fruits name ${var.fruits[count.index]}"
+#}
+#
+#
+#variable "fruits" {
+#  default = [ "apple", "banana", "orange" ]
+#}
+
+resource "null_resource" "test" {
+  for_each = var.names
+  provisioner "local-exec" {
+    command = "echo names is ${each.key} "
+    command = "echo numbers is ${each.value}"
+  }
 }
 
- provisioner "local-exec" {
-  command = "echo fruits name ${var.fruits[count.index]}"
+variable "names" {
+  default = {
+    Srikaanth = 100
+    Sridevi = 200
+  }
 }
-
-
-variable "fruits" {
-  default = [ "apple", "banana", "orange" ]
-}
-
-
 
 
