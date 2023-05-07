@@ -103,9 +103,13 @@ resource "null_resource" "test" {
 
 variable "names" {
   default = {
-    Srikaanth = 100
-    Sridevi = 200
+    Srikaanth = {
+    apple =10
   }
+    Sridevi = {
+      orange =20
+    }
+    }
 }
 
 
