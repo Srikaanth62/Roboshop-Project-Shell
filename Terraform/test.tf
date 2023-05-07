@@ -97,8 +97,7 @@ output "security_group" {
 resource "null_resource" "test" {
   for_each = var.names
   provisioner "local-exec" {
-    command = "echo names is ${each.key} "
-    command = "echo numbers is ${each.value}"
+    command = "echo names is ${each.key} = ${each.value}"
   }
 }
 
