@@ -79,7 +79,8 @@ data "aws_security_group" "allow-all" {
 
 output "security_group" {
   value = data.aws_security_group.allow-all.id
-} */
+} *//*
+
 
 #resource "null_resource" "fruits" {
 #  count = length(var.fruits)
@@ -94,6 +95,7 @@ output "security_group" {
 #  default = [ "apple", "banana", "orange" ]
 #}
 
+*/
 /*resource "null_resource" "test" {
   for_each = var.names
   provisioner "local-exec" {
@@ -107,7 +109,8 @@ variable "names" {
 
     Sridevi = 20
     }
-}*/
+}*//*
+
 
 variable "cloths" {
   default = {
@@ -128,3 +131,4 @@ resource "null_resource" "cloths" {
     command = "echo details ${each.key} and ${each.value["tops"]}"
   }
 }
+*/
