@@ -94,7 +94,7 @@ output "security_group" {
 #  default = [ "apple", "banana", "orange" ]
 #}
 
-resource "null_resource" "test" {
+/*resource "null_resource" "test" {
   for_each = var.names
   provisioner "local-exec" {
     command = "echo names is ${each.key} = ${each.value}"
@@ -107,6 +107,24 @@ variable "names" {
 
     Sridevi = 20
     }
+}*/
+
+variable "cloths" {
+  default = {
+    srikaanth = {
+      Shirts = 10
+      Jeans = 15
+    }
+    sridevi = {
+      tops = 20
+      leggins = 30
+    }
+  }
 }
 
-
+resource "null_resource" "cloths" {
+  for_each = var.cloths
+  provisioner "local-exec" {
+    command = "echo details ${each.key} and ${each.value}"
+  }
+}
