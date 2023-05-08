@@ -1,8 +1,5 @@
 module "sample" {
   source = "./example"
-  input = "Srikaanth"
+  input = "srikaanth"
 }
 
-module "sample2" {
-  source = "./output"
-}
