@@ -3,6 +3,6 @@ module "sample" {
   input = "Srikaanth"
 }
 
-module "output" {
+module "sample2" {
   source = "./output"
 }
