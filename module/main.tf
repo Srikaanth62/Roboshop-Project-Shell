@@ -1,5 +1,8 @@
 module "sample" {
   source = "./example"
-  input = "srikaanth"
+  input = module.person.names
 }
 
+module "person" {
+  source = "./output"
+}
