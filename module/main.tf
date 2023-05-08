@@ -1,4 +1,4 @@
 module "sample" {
-  source = "./module"
+  source = "./example"
 }
 
