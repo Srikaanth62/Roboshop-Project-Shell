@@ -1,3 +1,5 @@
 output "name" {
-  value = "srikaanth"
+  value = var.input
 }
+
+variable "input" {}
